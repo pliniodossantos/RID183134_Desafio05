@@ -1,3 +1,4 @@
+import AppError from "../errors/AppError.js";
 import bookModel from "../model/book.js";
 
 export default class ShowBookService{
@@ -7,7 +8,8 @@ export default class ShowBookService{
         if (book) {
             return book
             
-        }else throw e.message;
+        }else {
+            throw new AppError("Livro não encontrado",404)}
         
         
         

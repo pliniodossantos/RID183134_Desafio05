@@ -1,13 +1,13 @@
+import AppError from "../errors/AppError.js";
 import bookModel from "../model/book.js";
 
 export default class DeleteBookService {
     async execute(id) {
         const idExists = await bookModel.findOne({ id: id });
-        const e = new Error("Livro não encontrado");
         if (idExists == null) {
-            throw e.message;
+            throw new AppError("Livro não encontrado", 404);
         }
-        await bookModel.deleteOne({ id: id })
+        await bookModel.deleteOne({ id: id });
 
     }
 
