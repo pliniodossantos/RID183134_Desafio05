@@ -1,11 +1,11 @@
 export default class AppError {
-     message;
-     statusCode;
+    mensagem;
+     status;
 
 
-    constructor(message, statusCode = 400) {
-        this.message = message;
-        this.statusCode = statusCode;
+    constructor(mensagem, status = 400) {
+        this.mensagem = mensagem;
+        this.status = status;
 
     }
     

@@ -9,14 +9,14 @@ export default class ErrorHandleMiddleware {
     _next,
   ) {
     if (error instanceof AppError) {
-      return res.status(error.statusCode).json({
+      return res.status(error.status).json({
         type: 'error',
-        message: error.message,
+        mensagem: error.mensagem,
       });
     }
     return res.status(500).json({
       type: 'error',
-      message: 'Internal server error',
+      mensagem: 'Internal server error',
     });
   }
 }
