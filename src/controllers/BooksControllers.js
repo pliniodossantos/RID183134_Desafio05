@@ -22,20 +22,20 @@ export default class BooksControllers {
         const id = Number(request.params.id);
         const { titulo, num_paginas, isbn, editora } = request.body;
         const updateBookService = new UpdateBookService();
-        const book = await updateBookService.execute(id, titulo, num_paginas, isbn, editora)
-        return response.json(book);
+        await updateBookService.execute(id, titulo, num_paginas, isbn, editora)
+        return response.json({mensagem:'Edição realizada com sucesso'})
     }
     async create(request, response) {
         const { id, titulo, num_paginas, isbn, editora } = request.body;
         const createBookService = new CreateBookService();
         const book = await createBookService.execute(id, titulo, num_paginas, isbn, editora)
-        return response.json(book);
+        return response.json({mensagem:'Livro criado com sucesso'})
     }
     async delete(request, response) {
         const id = Number(request.params.id);
         const deleteBookService = new DeleteBookService();
         await deleteBookService.execute(id)
-        return response.status(204).send([]);
+        return response.json({mensagem:'Exluído com sucesso'})
     }
 
 
